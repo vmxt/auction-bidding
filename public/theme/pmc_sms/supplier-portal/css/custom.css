@@ -1,0 +1,20 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+
+
+
+#company-header address {
+	display: block;
+	margin-bottom: 0;
+	width: 100%;
+}
+
+.supp-legend {
+	margin: 0 5px;
+	width: 20%;
+}

@@ -1,0 +1,5 @@
+*.env
+.phpintel/*
+readme.md
+public/storage
+public/file-manager
