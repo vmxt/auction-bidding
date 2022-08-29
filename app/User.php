@@ -390,5 +390,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\SupplierModels\ApproversSetting', 'approver_id');
     }
     
-
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

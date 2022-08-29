@@ -128,7 +128,7 @@ class ArticleFrontController extends Controller
         $articleCategories = Article::leftJoin('article_categories', 'article_categories.id', 'articles.category_id')
             ->select([
                 DB::raw('isnull(article_categories.id, 0) as id'),
-                DB::raw('isnull(article_categories.name, 'Uncategorized') as name'),
+                DB::raw('isnull(article_categories.name, "Uncategorized") as name'),
                 DB::raw('count(isnull(article_categories.id, 0)) as total_articles')
             ])->where('articles.status', 'PUBLISHED')
             ->groupBy(DB::raw('article_categories.name, article_categories.id'))
@@ -173,7 +173,7 @@ class ArticleFrontController extends Controller
 
         }
         else{
-            $categories = DB::select('SELECT isnull(c.name, 'Uncategorized') as cat, isnull(c.id,0) as cid,count(isnull(c.id,0)) as total_articles FROM `articles` a left join article_categories c on c.id=a.category_id where a.deleted_at is null and status='Published' GROUP BY c.name,c.id ORDER BY c.name');
+            $categories = DB::select('SELECT isnull(c.name, "Uncategorized") as cat, isnull(c.id,0) as cid,count(isnull(c.id,0)) as total_articles FROM `articles` a left join article_categories c on c.id=a.category_id where a.deleted_at is null and status="Published" GROUP BY c.name,c.id ORDER BY c.name');
 
             $data = '<ul class="list-group">';
 
@@ -228,7 +228,7 @@ class ArticleFrontController extends Controller
         $articleCategories = Article::leftJoin('article_categories', 'article_categories.id', 'articles.category_id')
             ->select([
                 DB::raw('isnull(article_categories.id, 0) as id'),
-                DB::raw('isnull(article_categories.name, 'Uncategorized') as name'),
+                DB::raw('isnull(article_categories.name, "Uncategorized") as name'),
                 DB::raw('count(isnull(article_categories.id, 0)) as total_articles')
             ])->where('articles.status', 'PUBLISHED')
             ->groupBy(DB::raw('article_categories.name, article_categories.id'))

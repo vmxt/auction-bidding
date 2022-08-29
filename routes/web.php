@@ -92,12 +92,16 @@ Route::get('/ecommerce', function() {
     return view('site-underconstruction', compact('page'));
 });
 
-Route::get('/auction-and-bidding', function() {
+Route::namespace('AuctionBidding')->prefix('/auction-and-bidding')->group(function() {
+    Route::get('/', function() {
+        $page = new \App\Page;
+        $page->name = 'Auction and Bidding';
 
-    $page = new \App\Page;
-    $page->name = 'Auction and Bidding';
+        return view('site-underconstruction', compact('page'));
+    });
 
-    return view('site-underconstruction', compact('page'));
+    Route::resource('/company', 'CompanyController');
+    Route::resource('/branch', 'BranchController');
 });
 
 ##############################################################
