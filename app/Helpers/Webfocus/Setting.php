@@ -120,7 +120,7 @@ class Setting {
         $settings = DB::table('settings')->where('id',1)->first();
 
         if(trim($settings->company_logo) != "") 
-            return asset('storage').'/public/logos/'.$settings->company_logo;
+            return asset('storage').'/logos/'.$settings->company_logo;
 
         return asset('theme/pmc_sms/supplier-portal/images/logo.png');
 
