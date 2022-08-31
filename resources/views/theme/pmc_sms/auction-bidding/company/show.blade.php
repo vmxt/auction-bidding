@@ -35,11 +35,11 @@
                             </h2>
 
                             <ul style="list-style:none;">
-                                <li>Head Office: {{ $company->office_address }}</li>
-                                <li>Contact Person: {{ $company->contact_person }}</li>
-                                <li>Contact Number: {{ $company->contact_number }}</li>
-                                <li>Mobile Number: {{ $company->mobile_number }}</li>
-                                <li>Email Address: {{ $company->email_address }}</li>
+                                <b><li>Head Office:</b> {{ $company->office_address }}</li>
+                                <b><li>Contact Person:</b> {{ $company->contact_person }}</li>
+                                <b><li>Contact Number:</b> {{ $company->contact_number }}</li>
+                                <b><li>Mobile Number:</b> {{ $company->mobile_number }}</li>
+                                <b><li>Email Address:</b> {{ $company->email_address }}</li>
                             </ul>
                         </div>
 
@@ -76,7 +76,7 @@
                                                             <th>Email Address</th>
                                                             <th>Contact Person</th>
                                                             <th>Status</th>
-                                                            <th></th>
+                                                            <th>Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -92,8 +92,7 @@
                                                                 <td>{{ $branch->contact_person }}</td>
                                                                 <td><div class="badge {{ $branch->status == 'open' ? 'bg-success' : 'bg-danger' }}">{{ ucfirst($branch->status) }}</div></td>
                                                                 <td>
-                                                                    <form id="delete-form-{{ $branch->id }}" action="{{ route('branch.destroy', $branch->id) }}"
-                                                                        method="POST" style="display: none;">
+                                                                    <form id="delete-form-{{ $branch->id }}" action="{{ route('branch.destroy', $branch->id) }}" method="POST" style="display: none;">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     </form>
@@ -107,7 +106,7 @@
                                                                     <!-- Modal -->
                                                                     <div class="modal fade" id="editBranchModal{{ $company->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-lg">
-                                                                            <form class="row mb-0" id="" action="{{ route('branch.update', $company->id) }}" method="post" enctype="multipart/form-data">
+                                                                            <form class="row mb-0" id="" action="{{ route('branch.update', $branch->id) }}" method="post" enctype="multipart/form-data">
                                                                                 @csrf
                                                                                 @method('PUT')
 
@@ -461,7 +460,7 @@
                                                 <label for="">Region:</label>
                                             </div>
                                             <div class="col-sm-9">
-                                                <input type="email" name="region" id="" class="form-control required" value="">
+                                                <input type="text" name="region" id="" class="form-control required" value="">
                                             </div>
                                         </div>
                                     </div>
