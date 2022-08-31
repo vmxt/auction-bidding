@@ -1,4 +1,4 @@
-@extends('theme.pmc_sms.auction-bidding.layout')
+@extends('theme.pmc_sms.main.main')
 @section('content')
     @include('partials.page-title', [
         'title' => isset($company) ? 'Edit Company: ' . $company->name : 'Create A Company',

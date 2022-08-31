@@ -1,4 +1,4 @@
-@extends('theme.pmc_sms.auction-bidding.layout')
+@extends('theme.pmc_sms.main.main')
 @section('content')
     @include('partials.page-title', [
         'title' => 'View Edit Company',
@@ -607,7 +607,4 @@
             </form>
         </div>
     </div>
-@endsection
-@section('pagejs')
-    <script src="{{ asset('theme/pmc_sms/auction-bidding/js/functions.js') }}"></script>
 @endsection
