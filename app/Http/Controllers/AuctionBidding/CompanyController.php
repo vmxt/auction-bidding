@@ -120,4 +120,13 @@ class CompanyController extends Controller
 
         return back()->with('success', 'Company has been successfully deleted!');
     }
+
+    public function autocomplete(Request $request)
+    {
+        $data = Company::select("name")
+                ->where("name","LIKE","%{$request->get('query')}%")
+                ->get();
+   
+        return response()->json($data);
+    }
 }

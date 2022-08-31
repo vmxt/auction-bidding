@@ -102,6 +102,8 @@ Route::namespace('AuctionBidding')->prefix('/auction-and-bidding')->group(functi
 
     Route::resource('/company', 'CompanyController');
     Route::resource('/branch', 'BranchController');
+
+    Route::get('autocomplete', 'CompanyController@autocomplete')->name('autocomplete');
 });
 
 ##############################################################

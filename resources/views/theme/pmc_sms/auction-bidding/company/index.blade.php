@@ -29,11 +29,11 @@
                         <button type="button" id="calories-trigger" class="btn btn-secondary valid">Filter</button>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <div class="input-group w-auto me-3">
+                        <div class="input-group w-auto me-3 mr-3">
                             <span class="input-group-text">
                                 <i class="icon-line-search"></i>
                             </span>
-                            <input type="text" id="icons-filter" class="form-control" value="">
+                            <input type="text" id="icons-filter" class="typeahead form-control" value="">
                         </div>
                         
                         <a href="{{ route('company.create') }}" name="fitness-form-submit" class="btn btn-success">Create a Company</a>
@@ -82,8 +82,23 @@
                     </table>
                 </div>
 
-                {{ $companies->links() }}
+                {{ $companies->links('theme.pmc_sms.auction-bidding.pagination.default') }}
             </div>
         </div>
     </section>
+@endsection
+@section('pagejs')
+    <script src="{{ asset('theme/pmc_sms/auction-bidding/js/bootstrap3-typeahead.min.js') }}"></script>
+@endsection
+@section('customjs')
+    <script type="text/javascript">
+        var path = "{{ route('autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source:  function (query, process) {
+            return $.get(path, { query: query }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 @endsection
