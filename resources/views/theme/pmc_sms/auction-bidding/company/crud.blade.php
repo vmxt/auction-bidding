@@ -65,6 +65,16 @@
                                 <div class="col-12 form-group">
                                     <div class="row">
                                         <div class="col-sm-3 col-form-label">
+                                            <label for="">Logo:</label>
+                                        </div>
+                                        <div class="col-sm-9">
+                                        <input type="file" name="logo" class="form-control required" accept="image/png, image/gif, image/jpeg" value="{{ isset($company) ? $company->logo : '' }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <div class="row">
+                                        <div class="col-sm-3 col-form-label">
                                             <label for="">Contact Person:</label>
                                         </div>
                                         <div class="col-sm-9">

@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-12">
 
-                        <img src="{{ asset('theme/pmc_sms/auction-bidding/images/icons/avatar.jpg') }}" class="alignleft img-circle img-thumbnail my-0" alt="Avatar">
+                    <img src="{{ asset('/storage/public/image/'.$company->logo) }}" class="alignleft img-circle img-thumbnail my-0" alt="Avatar" style="width: 200px;" />
 
                         <div class="heading-block border-0 pb-3">
                             <h2>{{ $company->name }} 
