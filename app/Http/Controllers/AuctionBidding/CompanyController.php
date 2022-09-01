@@ -44,27 +44,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $company = Company::create($request->validate([
             'name' => 'unique:companies',
             'office_address' => 'required',
             'contact_person' => 'required',
             'email_address' => 'email',
             'mobile_number' => 'integer',
             'contact_number' => 'integer'
-        ]);
-
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-
-            $logoName = md5(uniqid() . date('u')) . '.' . pathinfo($logo->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $uploadFile = $logo->storeAs("/public/image", $logoName);
-            if ($uploadFile) {
-                $data['logo'] = $logoName;
-            }
-        }
-
-        $company = Company::create($data);
+        ]));
         
         return back()->with('success', 'Company has been successfully created!');
     }
@@ -109,27 +96,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'name' => 'unique:companies',
+        $company = Company::find($id)->update($request->validate([
+            'name' => 'required',
             'office_address' => 'required',
             'contact_person' => 'required',
             'email_address' => 'email',
             'mobile_number' => 'integer',
             'contact_number' => 'integer'
-        ]);
-
-        if ($request->hasFile('logo')) {
-            $logo = $request->file('logo');
-
-            $logoName = md5(uniqid() . date('u')) . '.' . pathinfo($logo->getClientOriginalName(), PATHINFO_EXTENSION);
-
-            $uploadFile = $logo->storeAs("/public/image", $logoName);
-            if ($uploadFile) {
-                $data['logo'] = $logoName;
-            }
-        }
-
-        $company = Company::find($id)->update($data);
+        ]));
         
         return back()->with('success', 'Company has been successfully updated!');
     }
