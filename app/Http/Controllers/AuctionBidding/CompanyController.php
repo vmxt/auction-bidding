@@ -45,7 +45,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $company = Company::create($request->validate([
-            'name' => 'unique:companies',
+            'name' => 'required',
             'office_address' => 'required',
             'contact_person' => 'required',
             'email_address' => 'email',
