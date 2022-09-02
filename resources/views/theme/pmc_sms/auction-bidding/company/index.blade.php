@@ -5,6 +5,8 @@
         'subtitle' => 'A Short Page Title Tagline'
     ])
 
+    
+
     <section id="content">
         <div class="content-wrap">
             <div class="container">
@@ -61,17 +63,21 @@
                                     </div>
                                 </td>
                                 <td>
+                                    
                                     <a href="{{ route('company.edit', $company->id) }}"><i class="icon-pencil2"></i></a>
                                     <a href="{{ route('company.show', $company->id) }}"><i class="icon-line-eye"></i></a>
                                     <a 
-                                        href="{{ route('company.destroy', $company->id) }}"
-                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $company->id }}').submit();">
+                                        
+                                        onclick="onDeleteCompany()"
+                                        id={{ $company->id }}>
                                         <i class="icon-remove"></i>
                                     </a>
+                                    <!-- <button onclick="onDeleteCompany()" id={{ $company->id }}><i class="icon-remove"></i></button> -->
+                                  
                                     <form id="delete-form-{{ $company->id }}" action="{{ route('company.destroy', $company->id) }}"
-                                        method="POST" style="display: none;">
+                                        method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('DELETE') 
                                     </form>                                                                    
                                 </td>
                             </tr>
@@ -86,11 +92,33 @@
             </div>
         </div>
     </section>
+
+    <script type="text/javascript">
+        function onDeleteCompany() { 
+            // $('#delete-company').on('click', function(e) {
+                // e.preventDefault();
+                let id = $(this).data('id');
+                Swal.fire({
+                title: 'Are you sure you want to delete this data?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ok'
+            }).then((result) => {
+                if (result.isConfirmed) { 
+                    $('delete-form-' + id).submit();
+                    window.location.href= "{{ route('company.destroy', $company->id) }}"
+                }
+            })  
+        }
+    </script>
 @endsection
 @section('pagejs')
     <script src="{{ asset('theme/pmc_sms/auction-bidding/js/bootstrap3-typeahead.min.js') }}"></script>
 @endsection
 @section('customjs')
+   
     <script type="text/javascript">
         var path = "{{ route('autocomplete') }}";
         $('input.typeahead').typeahead({
@@ -99,6 +127,8 @@
                     return process(data);
                 });
             }
-        });
+        });  
+        
+       
     </script>
 @endsection

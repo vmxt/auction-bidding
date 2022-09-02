@@ -26,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link rel="stylesheet" href="{{ asset('theme/pmc_sms/supplier-portal/css/custom.css') }}" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .heading-block:after{
             border-top: 0px;
@@ -70,7 +71,7 @@
     <!-- Go To Top
     ============================================= -->
     <div id="gotoTop" class="icon-angle-up"></div>
-
+   
     <!-- External JavaScripts
     ============================================= -->
     <script src="{{ asset('theme/pmc_sms/supplier-portal/js/jquery.js') }}"></script>

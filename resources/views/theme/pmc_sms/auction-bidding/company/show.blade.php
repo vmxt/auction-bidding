@@ -92,6 +92,7 @@
                                                                 <td>{{ $branch->contact_person }}</td>
                                                                 <td><div class="badge {{ $branch->status == 'open' ? 'bg-success' : 'bg-danger' }}">{{ ucfirst($branch->status) }}</div></td>
                                                                 <td>
+                                                                 
                                                                     <form id="delete-form-{{ $branch->id }}" action="{{ route('branch.destroy', $branch->id) }}" method="POST" style="display: none;">
                                                                         @csrf
                                                                         @method('DELETE')
@@ -607,4 +608,23 @@
             </form>
         </div>
     </div>
+    <script>
+    const Swal = require('sweetalert2');
+    
+    const onDeleteCompany = () => { 
+        Swal.fire({
+            title: 'Are you sure you want to delete this data?',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok'
+        }).then((result) => {
+            if (result.isConfirmed) {
+            
+            }
+        })
+    }
+
+    </script>
 @endsection
